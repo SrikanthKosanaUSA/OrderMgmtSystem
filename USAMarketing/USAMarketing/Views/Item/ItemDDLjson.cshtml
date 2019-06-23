@@ -1,0 +1,63 @@
+﻿@model USAMarketing.ViewModels.ItemLineItem
+@{
+    ViewBag.Title = "ItemDDLjson";
+}
+
+<h2>ItemDDL json</h2>
+
+<body onload="JavaScript: UpdateDOM(), GetLineItemDetails();">
+    <table>
+        <tr>
+            <td>Item Number: </td>
+            <td>
+                @Html.DropDownListFor(Iid => Iid.ItemViewModel.SelectItemID,
+                                        Model.ItemViewModel.ItemSelectList,
+                                        "Select an Item",
+                                         new { onchange = "GetLineItemDetails();", id = "ddlItem" })
+            </td>
+        </tr>
+    </table>
+
+    <span id="pvResult"></span>
+
+    <script>
+        function UpdateDOM() {
+            var ddlItem = document.getElementById("ddlItem");
+            //alert(ddlItem.innerHTML);
+            ddlItem[0].setAttribute("value", "0");
+            //alert(ddlItem.innerHTML);
+        }
+        function GetLineItemDetails() {
+            var SelectItemID = jQuery("#ddlItem").val();
+            //alert("Selected ItemID = " + SelectItemID);
+
+            //Json representation of our viewmodel
+            var ItemLineItem =
+                {
+                    ItemViewModel:
+                        {
+                            ItemCollection: [],
+                            ItemSelectList: [],
+                            SelectItemID: jQuery("#ddlItem").val()
+                        },
+                    LineItemViewModel:
+                        {
+                            LineItemCollection: []
+                        }
+
+                }
+            jQuery.ajax(
+                {
+                    url: "/Item/ItemDDLjson/",
+                    method: "POST",
+                    contentType: "application/json; charset=UTF-8",
+                    data: JSON.stringify(ItemLineItem),
+                    dataType: "html"
+                }).done(function (pvHtmlResult) { jQuery("#pvResult").html(pvHtmlResult); })
+                  .fail(function (jqXHR, textStatus, errorThrown)
+                  { alert(jqXHR + " " + textStatus + " " + errorThrown); });                 // ajax(settings).done(function).fail(function);
+
+        }
+
+    </script>
+</body>

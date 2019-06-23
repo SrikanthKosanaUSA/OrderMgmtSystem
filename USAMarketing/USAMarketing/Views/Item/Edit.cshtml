@@ -1,0 +1,67 @@
+﻿@model USAMarketing.ViewModels.ItemLineItem
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+   @Html.HiddenFor(model => model.ItemViewModel.ItemCollection[0].ItemID)
+     <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ItemViewModel.ItemCollection[0].ItemID)</td>
+            <td>@Html.DisplayFor(model => model.ItemViewModel.ItemCollection[0].ItemID)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ItemViewModel.ItemCollection[0].ItemNumber)</td>
+            <td>@Html.TextBoxFor(model => model.ItemViewModel.ItemCollection[0].ItemNumber, new { required = "required" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ItemViewModel.ItemCollection[0].Description)</td>
+            <td>@Html.TextBoxFor(model => model.ItemViewModel.ItemCollection[0].Description, new { required = "required" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.ItemViewModel.ItemCollection[0].UnitPrice)</td>
+            <td>@Html.TextBoxFor(model => model.ItemViewModel.ItemCollection[0].UnitPrice, new { required = "required" })</td>
+         </tr>
+
+</table>
+    <p></p>
+    <p></p>
+    <input type="submit" value="Save Changes" />
+    <p></p>
+   
+    
+     <p>LineItems:</p>
+   
+     
+ <table>
+    <tr>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].LineItemID)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].Quantity)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].UnitPrice)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].Amount)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].InvoiceID)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].ItemID)</th>
+        <th width="150">Links</th>
+    </tr>
+   
+        @foreach (var item in Model.LineItemViewModel.LineItemCollection)
+        {
+       <tr>  
+        <td>@Html.DisplayFor(modelItem => item.LineItemID)</td>
+        <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+        <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+        <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+        <td>@Html.DisplayFor(modelItem => item.InvoiceID)</td>
+        <td>@Html.DisplayFor(modelItem => item.ItemID)</td>
+        <td>@Html.ActionLink("Edit", "Edit", new { id = item.LineItemID, mode = "redirect" }) | Details |     @*Here 'mode=redirect' is a query string*@
+             @Html.ActionLink("Delete", "Delete", new { id = item.LineItemID, mode = "redirect" })</td>         
+       </tr>
+        }
+    </table>
+
+    @Html.ActionLink("Back to List", "Index")
+}
+                                                                           

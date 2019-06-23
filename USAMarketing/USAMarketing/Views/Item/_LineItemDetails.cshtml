@@ -1,0 +1,29 @@
+﻿@model USAMarketing.ViewModels.ItemLineItem
+<table>
+    <tr>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].LineItemID)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].Quantity)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].UnitPrice)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].Amount)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].InvoiceID)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.LineItemViewModel.LineItemCollection[0].ItemID)</th>
+        <th width="150">Links</th>
+    </tr>
+
+    @foreach (var item in Model.LineItemViewModel.LineItemCollection)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.LineItemID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+            <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+            <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+            <td>@Html.DisplayFor(modelItem => item.InvoiceID)</td>
+            <td>@Html.DisplayFor(modelItem => item.ItemID)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LineItemID }) | Details |
+            @Html.ActionLink("Delete", "Delete", new { id = item.LineItemID })
+        </td>
+    </tr>
+    }
+
+</table>

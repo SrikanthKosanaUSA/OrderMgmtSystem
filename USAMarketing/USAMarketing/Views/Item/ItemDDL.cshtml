@@ -1,0 +1,29 @@
+﻿@model USAMarketing.ViewModels.ItemLineItem
+@{
+    ViewBag.Title = "ItemDDL";
+}
+
+<h2>ItemDDL</h2>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>Item Number: </td>
+                <td>
+                    @Html.DropDownListFor(Iid => Iid.ItemViewModel.SelectItemID,
+                                        Model.ItemViewModel.ItemSelectList,
+                                        "Select an Item",
+                                        new { onchange = "this.form.submit();" })
+                </td>
+            </tr>
+
+
+        </table>
+
+        @Html.Partial("_LineItemDetails")
+
+    }
+
+</body>

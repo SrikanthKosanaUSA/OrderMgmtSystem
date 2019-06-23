@@ -1,0 +1,57 @@
+﻿@model USAMarketing.ViewModels.ItemLineItem
+@{
+    ViewBag.Title = "ItemDDLajax";
+}
+
+<h2>ItemDDL ajax</h2>
+
+<body onload="JavaScript: UpdateDOM(), GetLineItemDetails();">
+
+
+    <table>
+        <tr>
+            <td>Item Number: </td>
+            <td>
+                @Html.DropDownListFor(Iid => Iid.ItemViewModel.SelectItemID,
+                                        Model.ItemViewModel.ItemSelectList,
+                                        "Select an Item",
+                                         new { onchange = "GetLineItemDetails();", id = "ddlItem" })
+            </td>
+        </tr>
+
+
+    </table>
+
+    <span id="pvResult"></span>
+
+    @*@Html.Partial("_LineItemDetails")*@
+
+    <script>
+        function UpdateDOM() {
+            var ddlItem = document.getElementById("ddlItem");
+            //alert(ddlItem.innerHTML);
+            ddlItem[0].setAttribute("value", "0");
+            //alert(ddlItem.innerHTML);
+        }
+        function GetLineItemDetails() {
+            var SelectItemID = jQuery("#ddlItem").val();
+            //alert("Selected ItemID = " + SelectItemID);
+
+            jQuery.ajax(
+                {
+                    url: "/Item/ItemDDLajax/",
+                    method: "POST",
+                    data: { ItemID: SelectItemID }
+                }).done(function (pvHtmlResult) { jQuery("#pvResult").html(pvHtmlResult); })
+                  .fail(function (jqXHR, textStatus, errorThrown)
+                  { alert(jqXHR + " " + textStatus + " " + errorThrown); });                 // ajax(settings).done(function).fail(function);
+
+        }
+
+        // full implementation of the function for illustration
+        //function GetCallBack(pvHtmlResult)
+        //{
+        //    jQuery("#pvResult").html(pvHtmlResult);
+        //}
+    </script>
+</body>

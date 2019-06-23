@@ -1,0 +1,40 @@
+﻿@model USAMarketing.Models.LineItemModels
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.LineItemCollection[0].LineItemID)
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].ItemID)</td>
+            <td>@Html.DropDownList("ItemList")</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].Quantity)</td>
+            <td>@Html.TextBoxFor(model => model.LineItemCollection[0].Quantity, new { required = "required" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].UnitPrice)</td>
+            <td>@Html.TextBoxFor(model => model.LineItemCollection[0].UnitPrice, new { required = "required" })</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].Amount)</td>
+            <td>@Html.TextBoxFor(model => model.LineItemCollection[0].Amount, new { required = "required" })</td>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].InvoiceID)</td>
+            <td>@Html.TextBoxFor(model => model.LineItemCollection[0].InvoiceID, new { required = "required" })</td>
+        </tr>
+        
+
+    </table>
+    <p></p>
+    <p></p>
+    <input type="submit" value="Save Changes" />
+    <p></p>
+    <p></p>
+    @Html.ActionLink("Back to List", "Index")
+}

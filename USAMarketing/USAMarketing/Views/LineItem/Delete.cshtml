@@ -1,0 +1,39 @@
+﻿@model USAMarketing.Models.LineItemModels
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Do you want to Delete this LineItem?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.LineItemCollection[0].LineItemID)
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].LineItemID)</td>
+            <td>@Html.DisplayFor(model => model.LineItemCollection[0].LineItemID)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].Quantity)</td>
+            <td>@Html.DisplayFor(model => model.LineItemCollection[0].Quantity)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].UnitPrice)</td>
+            <td>@Html.DisplayFor(model => model.LineItemCollection[0].UnitPrice)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].Amount)</td>
+            <td>@Html.DisplayFor(model => model.LineItemCollection[0].Amount)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.LineItemCollection[0].InvoiceID)</td>
+            <td>@Html.DisplayFor(model => model.LineItemCollection[0].InvoiceID)</td>
+        </tr>
+    </table>
+    <p></p>
+    <p></p>
+    <input type="submit" value="Delete" />
+    <p></p>
+    <p></p>
+    @Html.ActionLink("Back to List", "Index")
+}

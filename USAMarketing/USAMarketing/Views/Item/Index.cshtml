@@ -1,0 +1,32 @@
+﻿@model USAMarketing.Models.ItemModels
+@{
+    ViewBag.Title = "Index";
+   // TEST
+   //var testvar = Model.ItemCollection[0].ItemID;
+}
+
+<h2>Index</h2>
+
+<p>@Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <tr>
+        <th width="150">@Html.DisplayNameFor(model => model.ItemCollection[0].ItemID)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.ItemCollection[0].ItemNumber)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.ItemCollection[0].Description)</th>
+        <th width="150">@Html.DisplayNameFor(model => model.ItemCollection[0].UnitPrice)</th>
+        <th width="150">Links</th>
+     </tr>
+   
+        @foreach (var item in Model.ItemCollection)
+        {
+       <tr>  
+        <td>@Html.DisplayFor(modelItem => item.ItemID)</td>
+        <td>@Html.DisplayFor(modelItem => item.ItemNumber)</td>
+        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+        <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+        <td>@Html.ActionLink("Edit", "Edit", new { id = item.ItemID }) | Details |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ItemID })</td>
+       </tr>
+        }
+    </table>
