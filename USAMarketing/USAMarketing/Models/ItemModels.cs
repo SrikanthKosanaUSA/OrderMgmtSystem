@@ -29,7 +29,8 @@ namespace USAMarketing.Models
 
 		// This is the Class representation of DataTable in our data tier
 		public class tblItem
-    {        
+    {  
+            
        [Display(Name="ItemID")]     
         public Int32 ItemID { get; set; }
        [Display(Name="ItemNumber")]
