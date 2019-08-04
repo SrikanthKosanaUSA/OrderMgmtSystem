@@ -82,7 +82,9 @@ namespace USAMarketing.Controllers
                                                LineItemModel.LineItemCollection[0].ItemID);    // Selected value
          
 
+           // var LineItemModel.id;
             return View(LineItemModel);
+
         }
 
         //Post: /LineItem/Edit/2000 (LineItemID)
