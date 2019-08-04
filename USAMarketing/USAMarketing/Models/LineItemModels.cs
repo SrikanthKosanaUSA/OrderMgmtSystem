@@ -31,6 +31,8 @@ namespace USAMarketing.Models
         [Display(Name = "ItemID")]
             public Int32 ItemID { get; set; }
 
+            //public string Name { get; set; }
+
     }
 
     }

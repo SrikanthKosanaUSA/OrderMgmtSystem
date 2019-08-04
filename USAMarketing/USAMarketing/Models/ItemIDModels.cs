@@ -12,5 +12,7 @@ namespace USAMarketing.Models
             ItemID = new Int32();
         }
         public Int32 ItemID { get; set; }
+
+        //public string Name { get; set; }
     }
 }
