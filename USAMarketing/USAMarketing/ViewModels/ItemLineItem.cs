@@ -13,8 +13,11 @@ namespace USAMarketing.ViewModels
             ItemViewModel = new ItemModels();
             LineItemViewModel = new LineItemModels();
         }
-        
+
+        //Master Record
         public ItemModels ItemViewModel { get; set; }
+
+        //Details Records for it's Master
         public LineItemModels LineItemViewModel { get; set; }
 
     }
