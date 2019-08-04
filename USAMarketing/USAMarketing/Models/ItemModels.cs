@@ -24,6 +24,7 @@ namespace USAMarketing.Models
 
 		public List<SelectListItem> ItemSelectList { get; set; }
 
+        //SelectListItemID is the key for drop down list items ......
 		public Int32 SelectItemID { get; set; }
 
 		// This is the Class representation of DataTable in our data tier

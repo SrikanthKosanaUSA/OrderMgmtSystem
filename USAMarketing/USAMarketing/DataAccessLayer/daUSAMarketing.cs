@@ -11,7 +11,7 @@ namespace USAMarketing.DataAccessLayer
     public class daUSAMarketing
     {
         //Be sure to add using for System.Data.SqlClient
-
+        //Constructor method for Data Access Layer
         public daUSAMarketing()
         {
             //Initialize properties

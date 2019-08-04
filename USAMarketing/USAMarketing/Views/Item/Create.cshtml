@@ -8,14 +8,17 @@
 @using (Html.BeginForm())
 {
     <table>
+       
         <tr>
             <td>@Html.DisplayNameFor(model => model.ItemCollection[0].ItemNumber)</td>
             <td>@Html.TextBoxFor(model => model.ItemCollection[0].ItemNumber, new {required = "required"})</td>
         </tr>
+       
         <tr>
             <td>@Html.DisplayNameFor(model => model.ItemCollection[0].Description)</td>
             <td>@Html.TextBoxFor(model => model.ItemCollection[0].Description, new { required = "required" })</td>
         </tr>
+        
         <tr>
             <td>@Html.DisplayNameFor(model => model.ItemCollection[0].UnitPrice)</td>
             <td>@Html.TextBoxFor(model => model.ItemCollection[0].UnitPrice, new { required = "required" })</td>
